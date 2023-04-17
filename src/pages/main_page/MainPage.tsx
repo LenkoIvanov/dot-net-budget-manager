@@ -29,7 +29,13 @@ export const MainPage = () => {
           style={{ marginBottom: "1rem" }}
         />
       )}
-      <BudgetItem name="DefaultItem" value={100} />
+      <div className={styles.itemContainer}>
+        <BudgetItem name="DefaultItem" value={100} />
+        <BudgetItem name="DefaultItem" value={100} />
+        <BudgetItem name="DefaultItem" value={100} />
+        <BudgetItem name="DefaultItem" value={100} />
+        <BudgetItem name="DefaultItem" value={100} />
+      </div>
     </div>
   );
 };
