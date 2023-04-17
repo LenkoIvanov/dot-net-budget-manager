@@ -3,19 +3,21 @@ import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import styles from "./NewItemForm.module.css";
+import { INewItemFormProps } from "./INewItemFormProps";
 
-export const NewItemForm = () => {
+export const NewItemForm = (props: INewItemFormProps) => {
+  const { closeForm } = props;
   const [nameValue, setNameValue] = useState<string>("");
   const [priceValue, setPriceValue] = useState<number | null>(null);
 
   const onBtnClickPlaceholder = () => {
     setNameValue("");
     setPriceValue(null);
+    closeForm();
   };
 
   return (
     <div className={styles.mainContainer}>
-      <h4>Create a new budget item</h4>
       <div className={styles.inputContainer}>
         <InputText
           placeholder="Enter a name..."
