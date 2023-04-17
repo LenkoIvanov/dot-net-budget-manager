@@ -1,0 +1,17 @@
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.mainContainer {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+}
