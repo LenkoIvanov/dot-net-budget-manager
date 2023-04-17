@@ -8,3 +8,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.icon {
+  cursor: pointer;
+  padding-right: 10px;
+}

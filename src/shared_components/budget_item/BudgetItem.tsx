@@ -1,5 +1,6 @@
 import { IBudgetItemProps } from "./IBudgetItemProps";
 import styles from "./BudgetItem.module.css";
+import { MdCreate, MdDelete } from "react-icons/md";
 
 export const BudgetItem = (props: IBudgetItemProps) => {
   const { name, value } = props;
@@ -9,7 +10,12 @@ export const BudgetItem = (props: IBudgetItemProps) => {
       <div>
         {name} - {value}
       </div>
-      <div>IconContainer</div>
+      <div>
+        <>
+          <MdCreate className={styles.icon} />
+          <MdDelete className={styles.icon} />
+        </>
+      </div>
     </div>
   );
 };
