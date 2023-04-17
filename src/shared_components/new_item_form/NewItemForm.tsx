@@ -6,7 +6,7 @@ import styles from "./NewItemForm.module.css";
 
 export const NewItemForm = () => {
   const [nameValue, setNameValue] = useState<string>("");
-  const [priceValue, setPriceValue] = useState<number | null>(0);
+  const [priceValue, setPriceValue] = useState<number | null>(null);
 
   const onBtnClickPlaceholder = () => {
     setNameValue("");
@@ -21,6 +21,7 @@ export const NewItemForm = () => {
           placeholder="Enter a name..."
           value={nameValue}
           onChange={(ev) => setNameValue(ev.target.value)}
+          style={{ marginRight: "4rem" }}
         />
         <InputNumber
           placeholder="Enter a price..."
@@ -31,7 +32,12 @@ export const NewItemForm = () => {
         />
       </div>
       <div className={styles.btnContainer}>
-        <Button label="Cancel" outlined onClick={onBtnClickPlaceholder} />
+        <Button
+          label="Cancel"
+          outlined
+          onClick={onBtnClickPlaceholder}
+          style={{ marginRight: "2rem" }}
+        />
         <Button label="Create" onClick={onBtnClickPlaceholder} />
       </div>
     </div>

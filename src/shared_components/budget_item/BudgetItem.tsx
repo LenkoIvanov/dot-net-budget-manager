@@ -10,11 +10,9 @@ export const BudgetItem = (props: IBudgetItemProps) => {
       <div>
         {name} - {value}
       </div>
-      <div>
-        <>
-          <MdCreate className={styles.icon} />
-          <MdDelete className={styles.icon} />
-        </>
+      <div className={styles.iconContainer}>
+        <MdCreate style={{ cursor: "pointer" }} />
+        <MdDelete style={{ cursor: "pointer" }} />
       </div>
     </div>
   );
