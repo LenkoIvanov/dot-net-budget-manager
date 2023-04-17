@@ -1,0 +1,10 @@
+.container {
+  width: 40rem;
+  height: max-content;
+  padding: 1rem;
+  border: 1px transparent;
+  border-radius: 25px;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+}
