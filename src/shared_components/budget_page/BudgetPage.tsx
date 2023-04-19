@@ -4,6 +4,7 @@ import { useState } from "react";
 import { NewBudgetForm } from "../new_budget_form/NewBudgetForm";
 import { IBudgetPageProps } from "./IBudgetPageProps";
 import styles from "./BudgetPage.module.css";
+import { GiMoneyStack } from "react-icons/gi";
 
 export const BudgetPage = (props: IBudgetPageProps) => {
   const { toggleBudgetMenu } = props;
@@ -37,6 +38,7 @@ export const BudgetPage = (props: IBudgetPageProps) => {
               onClick={() => setIsCreatingBudget(true)}
             />
           </div>
+          <GiMoneyStack style={{ fontSize: "20rem", color: "slategray" }} />
         </div>
       )}
     </div>
