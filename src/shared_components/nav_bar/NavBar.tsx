@@ -4,7 +4,9 @@ import styles from "./NavBar.module.css";
 export const NavBar = () => {
   return (
     <div className={styles.navbar}>
-      <h4 style={{ marginRight: "2rem" }}>Budget tracker with React&.NET</h4>
+      <h4 style={{ marginRight: "2rem" }}>
+        <b>Budget tracker with React&.NET</b>
+      </h4>
       <Link href={"/"} style={{ marginRight: "2rem" }}>
         App
       </Link>
