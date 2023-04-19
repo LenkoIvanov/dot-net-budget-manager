@@ -11,7 +11,7 @@ export const NewBudgetForm = (props: INewBudgetFormProps) => {
   const [nameValue, setNameValue] = useState<string>("");
   const [totalValue, setTotalValue] = useState<number | null>(null);
   const [currency, setCurrency] = useState<string>("");
-  const { toggleBudgetMenu } = props;
+  const { toggleBudgetMenu, toggleOffCreation } = props;
 
   const btnPlaceholder = () => {
     setNameValue("");
@@ -49,7 +49,10 @@ export const NewBudgetForm = (props: INewBudgetFormProps) => {
         <Button
           label="Cancel"
           outlined
-          onClick={btnPlaceholder}
+          onClick={() => {
+            btnPlaceholder();
+            toggleOffCreation();
+          }}
           style={{ marginRight: "2rem" }}
           className={btnStyles.btnSecondary}
         />
