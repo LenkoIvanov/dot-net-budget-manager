@@ -4,14 +4,10 @@ import styles from "./NavBar.module.css";
 export const NavBar = () => {
   return (
     <div className={styles.navbar}>
-      <ul>
-        <li>
-          <Link href={"/"}>App</Link>
-        </li>
-        <li>
-          <Link href={"/about_page"}>About</Link>
-        </li>
-      </ul>
+      <Link href={"/"} style={{ marginRight: "2rem" }}>
+        App
+      </Link>
+      <Link href={"/about_page"}>About</Link>
     </div>
   );
 };
