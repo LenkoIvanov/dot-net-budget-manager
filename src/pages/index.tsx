@@ -2,10 +2,9 @@ import Head from "next/head";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import { NewBudgetForm } from "@/shared_components/new_budget_form/NewBudgetForm";
 import { useState } from "react";
 import { NavBar } from "@/shared_components/nav_bar/NavBar";
-import { SingleBudgetPage } from "@/shared_components/single_budget_page/SingleBudgetPage";
+import { MainAppPage } from "./main_app_page/MainAppPage";
 
 export default function Home() {
   const [isBudgetMenu, setIsBudgetMenu] = useState<Boolean>(true);
@@ -23,11 +22,7 @@ export default function Home() {
         <NavBar />
       </div>
       <main>
-        {isBudgetMenu ? (
-          <NewBudgetForm toggleBudgetMenu={togglePageView} />
-        ) : (
-          <SingleBudgetPage toggleBudgetMenu={togglePageView} />
-        )}
+        <MainAppPage />
       </main>
     </>
   );
