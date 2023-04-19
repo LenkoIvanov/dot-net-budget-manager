@@ -1,0 +1,11 @@
+.navbar {
+  background-color: lightsteelblue;
+  top: 0px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 3rem;
+  padding: 1rem;
+  left: 0px;
+}

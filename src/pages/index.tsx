@@ -5,6 +5,7 @@ import "primeicons/primeicons.css";
 import { SingleBudgetPage } from "./single_budget_page/SingleBudgetPage";
 import { NewBudgetForm } from "@/shared_components/new_budget_form/NewBudgetForm";
 import { useState } from "react";
+import { NavBar } from "@/shared_components/nav_bar/NavBar";
 
 export default function Home() {
   const [isBudgetMenu, setIsBudgetMenu] = useState<Boolean>(true);
@@ -18,8 +19,10 @@ export default function Home() {
       <Head>
         <title>Budgeting Tool</title>
       </Head>
+      <div style={{ marginBottom: "3rem" }}>
+        <NavBar />
+      </div>
       <main>
-        <h1>NavBar</h1>
         {isBudgetMenu ? (
           <NewBudgetForm toggleBudgetMenu={togglePageView} />
         ) : (
