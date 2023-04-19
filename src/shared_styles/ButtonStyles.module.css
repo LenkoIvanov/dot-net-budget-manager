@@ -1,0 +1,17 @@
+.btnPrimary {
+  background: steelblue;
+  border: 1px solid steelblue;
+}
+
+.btnPrimary:hover {
+  background: steelblue !important;
+  border-color: steelblue !important;
+}
+
+.btnSecondary {
+  color: steelblue !important;
+}
+
+.btnSecondary:hover {
+  color: steelblue !important;
+}

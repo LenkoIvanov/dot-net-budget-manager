@@ -5,6 +5,7 @@ import { Button } from "primereact/button";
 import { useState } from "react";
 import styles from "./SingleBudgetPage.module.css";
 import { ISingleBudgetPageProps } from "./ISingleBudgetPageProps";
+import btnStyles from "../../shared_styles/ButtonStyles.module.css";
 
 export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
   const [isCreating, setIsCreating] = useState<Boolean>(false);
@@ -29,6 +30,7 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
           label="Create new item"
           onClick={() => setIsCreating(true)}
           style={{ marginBottom: "1rem" }}
+          className={btnStyles.btnPrimary}
         />
       )}
       <div className={styles.itemContainer}>
@@ -42,6 +44,7 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
         label={"To budgets menu"}
         onClick={() => toggleBudgetMenu(true)}
         style={{ marginTop: "2rem" }}
+        className={btnStyles.btnPrimary}
       />
     </div>
   );

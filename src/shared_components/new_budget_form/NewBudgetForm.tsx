@@ -1,4 +1,3 @@
-import { Currency } from "@/types/Currency";
 import { InputNumber } from "primereact/inputnumber";
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
@@ -6,6 +5,7 @@ import { useState } from "react";
 import { Button } from "primereact/button";
 import styles from "./NewBudgetForm.module.css";
 import { INewBudgetFormProps } from "./INewBudgetFormProps";
+import btnStyles from "../../shared_styles/ButtonStyles.module.css";
 
 export const NewBudgetForm = (props: INewBudgetFormProps) => {
   const [nameValue, setNameValue] = useState<string>("");
@@ -51,12 +51,14 @@ export const NewBudgetForm = (props: INewBudgetFormProps) => {
           outlined
           onClick={btnPlaceholder}
           style={{ marginRight: "2rem" }}
+          className={btnStyles.btnSecondary}
         />
         <Button
           label="Create"
           onClick={() => {
             btnPlaceholder(), toggleBudgetMenu(false);
           }}
+          className={btnStyles.btnPrimary}
         />
       </div>
     </div>

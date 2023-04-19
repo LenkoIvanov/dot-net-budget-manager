@@ -4,6 +4,7 @@ import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import styles from "./NewItemForm.module.css";
 import { INewItemFormProps } from "./INewItemFormProps";
+import btnStyles from "../../shared_styles/ButtonStyles.module.css";
 
 export const NewItemForm = (props: INewItemFormProps) => {
   const { closeForm } = props;
@@ -39,8 +40,13 @@ export const NewItemForm = (props: INewItemFormProps) => {
           outlined
           onClick={onBtnClickPlaceholder}
           style={{ marginRight: "2rem" }}
+          className={btnStyles.btnSecondary}
         />
-        <Button label="Create" onClick={onBtnClickPlaceholder} />
+        <Button
+          label="Create"
+          onClick={onBtnClickPlaceholder}
+          className={btnStyles.btnPrimary}
+        />
       </div>
     </div>
   );
