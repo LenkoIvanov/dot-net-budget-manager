@@ -5,13 +5,13 @@ import { Dropdown } from "primereact/dropdown";
 import { useState } from "react";
 import { Button } from "primereact/button";
 import styles from "./NewBudgetForm.module.css";
+import { INewBudgetFormProps } from "./INewBudgetFormProps";
 
-export const NewBudgetForm = () => {
+export const NewBudgetForm = (props: INewBudgetFormProps) => {
   const [nameValue, setNameValue] = useState<string>("");
   const [totalValue, setTotalValue] = useState<number | null>(null);
   const [currency, setCurrency] = useState<string>("");
-
-  // TODO: Rename mainpage to BudgetContents
+  const { toggleBudgetMenu } = props;
 
   const btnPlaceholder = () => {
     setNameValue("");
@@ -52,7 +52,12 @@ export const NewBudgetForm = () => {
           onClick={btnPlaceholder}
           style={{ marginRight: "2rem" }}
         />
-        <Button label="Create" onClick={btnPlaceholder} />
+        <Button
+          label="Create"
+          onClick={() => {
+            btnPlaceholder(), toggleBudgetMenu(false);
+          }}
+        />
       </div>
     </div>
   );

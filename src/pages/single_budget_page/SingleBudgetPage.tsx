@@ -3,10 +3,12 @@ import { BudgetTracker } from "@/shared_components/budget_tracker/BudgetTracker"
 import { NewItemForm } from "@/shared_components/new_item_form/NewItemForm";
 import { Button } from "primereact/button";
 import { useState } from "react";
-import styles from "./MainPage.module.css";
+import styles from "./SingleBudgetPage.module.css";
+import { ISingleBudgetPageProps } from "./ISingleBudgetPageProps";
 
-export const MainPage = () => {
+export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
   const [isCreating, setIsCreating] = useState<Boolean>(false);
+  const { toggleBudgetMenu } = props;
 
   const callBackPlaceholder = () => {
     setIsCreating(false);
@@ -36,6 +38,11 @@ export const MainPage = () => {
         <BudgetItem name="DefaultItem" value={100} />
         <BudgetItem name="DefaultItem" value={100} />
       </div>
+      <Button
+        label={"To budgets menu"}
+        onClick={() => toggleBudgetMenu(true)}
+        style={{ marginTop: "2rem" }}
+      />
     </div>
   );
 };
