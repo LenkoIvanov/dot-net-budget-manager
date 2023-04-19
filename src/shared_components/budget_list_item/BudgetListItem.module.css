@@ -1,0 +1,10 @@
+.listItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px transparent;
+  border-radius: 25px;
+  background-color: aliceblue;
+  margin-bottom: 1rem;
+}

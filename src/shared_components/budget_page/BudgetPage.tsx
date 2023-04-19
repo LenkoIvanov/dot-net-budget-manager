@@ -5,12 +5,14 @@ import { NewBudgetForm } from "../new_budget_form/NewBudgetForm";
 import { IBudgetPageProps } from "./IBudgetPageProps";
 import styles from "./BudgetPage.module.css";
 import { GiMoneyStack } from "react-icons/gi";
+import { Dialog } from "primereact/dialog";
+import { BudgetListItem } from "../budget_list_item/BudgetListItem";
 
 export const BudgetPage = (props: IBudgetPageProps) => {
   const { toggleBudgetMenu } = props;
 
   const [isCreatingBudget, setIsCreatingBudget] = useState<Boolean>(false);
-  const [isModalVisible, setIsModalVisible] = useState<Boolean>(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleCancelBudgetCreation = () => {
     setIsCreatingBudget(false);
@@ -39,6 +41,29 @@ export const BudgetPage = (props: IBudgetPageProps) => {
             />
           </div>
           <GiMoneyStack style={{ fontSize: "20rem", color: "slategray" }} />
+          <Dialog
+            header={"Existing budgets"}
+            visible={isModalVisible}
+            onHide={() => setIsModalVisible(false)}
+            style={{ width: "50rem" }}
+            footer={
+              <Button
+                label="Open budget"
+                className={btnStyles.btnPrimary}
+                onClick={() => {
+                  setIsModalVisible(false);
+                  toggleBudgetMenu(false);
+                }}
+                disabled={true}
+              />
+            }
+          >
+            <BudgetListItem name={"DefaultBudget"} />
+            <BudgetListItem name={"DefaultBudget"} />
+            <BudgetListItem name={"DefaultBudget"} />
+            <BudgetListItem name={"DefaultBudget"} />
+            <BudgetListItem name={"DefaultBudget"} />
+          </Dialog>
         </div>
       )}
     </div>
