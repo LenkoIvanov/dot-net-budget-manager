@@ -24,3 +24,9 @@ C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi
 C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.pdb
 C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.genruntimeconfig.cache
 C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\ref\BudgetApi.dll
+C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.csproj.CopyComplete
