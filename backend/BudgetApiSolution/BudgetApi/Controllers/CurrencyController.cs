@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace BudgetApi.Controllers
 {
@@ -15,9 +16,26 @@ namespace BudgetApi.Controllers
         }
 
         [HttpGet] // decorator to signify get endpoint
-        public ActionResult get()
+        public ActionResult<Currency> getCurrencies()
         {
-            return Ok("works");
+            var currencies = this.currencyContext.Currencies.ToList();
+            if(currencies.Count == 0)
+            {
+                return NotFound();
+            }
+            return Ok(currencies);
+        }
+
+        [HttpPost]
+        public ActionResult postCurrency(Currency currency)
+        {
+            if(currency == null)
+            {
+                return BadRequest();
+            }
+            this.currencyContext.Currencies.Add(currency);
+            this.currencyContext.SaveChanges();
+            return Ok();
         }
 
     }
