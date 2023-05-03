@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenko Ivanov\\dot-net-budget-manager\\backend\\BudgetApiSolution\\BudgetApi\\BudgetApi.csproj": {}
+    "C:\\Users\\livanov\\Documents\\GitHub\\dot-net-budget-manager\\backend\\BudgetApiSolution\\BudgetApi\\BudgetApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenko Ivanov\\dot-net-budget-manager\\backend\\BudgetApiSolution\\BudgetApi\\BudgetApi.csproj": {
+    "C:\\Users\\livanov\\Documents\\GitHub\\dot-net-budget-manager\\backend\\BudgetApiSolution\\BudgetApi\\BudgetApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenko Ivanov\\dot-net-budget-manager\\backend\\BudgetApiSolution\\BudgetApi\\BudgetApi.csproj",
+        "projectUniqueName": "C:\\Users\\livanov\\Documents\\GitHub\\dot-net-budget-manager\\backend\\BudgetApiSolution\\BudgetApi\\BudgetApi.csproj",
         "projectName": "BudgetApi",
-        "projectPath": "C:\\Users\\Lenko Ivanov\\dot-net-budget-manager\\backend\\BudgetApiSolution\\BudgetApi\\BudgetApi.csproj",
-        "packagesPath": "C:\\Users\\Lenko Ivanov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenko Ivanov\\dot-net-budget-manager\\backend\\BudgetApiSolution\\BudgetApi\\obj\\",
+        "projectPath": "C:\\Users\\livanov\\Documents\\GitHub\\dot-net-budget-manager\\backend\\BudgetApiSolution\\BudgetApi\\BudgetApi.csproj",
+        "packagesPath": "C:\\Users\\livanov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\livanov\\Documents\\GitHub\\dot-net-budget-manager\\backend\\BudgetApiSolution\\BudgetApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lenko Ivanov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\livanov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,13 +45,25 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
             },
-            "Microsoft.EntityFrameworkCore.InMemory": {
+            "Microsoft.EntityFrameworkCore.Design": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL.Design": {
+              "target": "Package",
+              "version": "[1.1.0, )"
             }
           },
           "imports": [
@@ -68,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -30,3 +30,42 @@ C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi
 C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Lenko Ivanov\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.csproj.CopyComplete
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\refint\BudgetApi.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.pdb
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\appsettings.json
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\BudgetApi.exe
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\BudgetApi.deps.json
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\BudgetApi.runtimeconfig.json
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\BudgetApi.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\BudgetApi.pdb
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Npgsql.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.csproj.AssemblyReference.cache
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.AssemblyInfoInputs.cache
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.AssemblyInfo.cs
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.csproj.CoreCompileInputs.cache
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\staticwebassets\msbuild.BudgetApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\staticwebassets\msbuild.build.BudgetApi.props
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.BudgetApi.props
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.BudgetApi.props
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\scopedcss\bundle\BudgetApi.styles.css
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.csproj.CopyComplete
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\BudgetApi.genruntimeconfig.cache
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\obj\Debug\net7.0\ref\BudgetApi.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Humanizer.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\livanov\Documents\GitHub\dot-net-budget-manager\backend\BudgetApiSolution\BudgetApi\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll
