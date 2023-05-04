@@ -5,37 +5,35 @@ namespace BudgetApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CurrencyController : ControllerBase
+    public class BudgetItemController : ControllerBase
     {
         // TODO: define db context once and for all
         private readonly ApplicationDBContext dbContext;
-        public CurrencyController(ApplicationDBContext dbcontext)
+        public BudgetItemController(ApplicationDBContext dbcontext)
         {
             this.dbContext = dbcontext;
         }
 
-        [HttpGet] // Decorator signifies an endpoint
-        public ActionResult<Currency> getCurrencies()
+        [HttpGet]
+        public ActionResult<BudgetItem> getBudgetItems()
         {
-            var currencies = this.dbContext.Currencies.ToList();
-            if(currencies.Count == 0)
-            {
+            var budgetItems = this.dbContext.BudgetItems.ToList();
+            if(budgetItems.Count == 0 ) {
                 return NotFound();
             }
-            return Ok(currencies);
+            return Ok(budgetItems);
         }
 
         [HttpPost]
-        public ActionResult postCurrency(Currency currency)
+        public ActionResult postBudgetItems(BudgetItem budgetItem)
         {
-            if(currency == null)
+            if(budgetItem == null)
             {
                 return BadRequest();
             }
-            this.dbContext.Currencies.Add(currency);
+            this.dbContext.BudgetItems.Add(budgetItem);
             this.dbContext.SaveChanges();
             return Ok();
         }
-
     }
 }
