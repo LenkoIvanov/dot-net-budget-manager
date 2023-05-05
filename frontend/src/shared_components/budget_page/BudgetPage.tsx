@@ -1,6 +1,6 @@
 import { Button } from "primereact/button";
 import btnStyles from "../../shared_styles/ButtonStyles.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NewBudgetForm } from "../new_budget_form/NewBudgetForm";
 import { IBudgetPageProps } from "./IBudgetPageProps";
 import styles from "./BudgetPage.module.css";
@@ -17,6 +17,7 @@ export const BudgetPage = (props: IBudgetPageProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [budgetElements, setBudgetElements] = useState<JSX.Element[]>([]);
   const [budgets, setBudgets] = useState<IBudget[]>([]);
+  const shouldRefetch = useRef<{ refetch: boolean }>({ refetch: true });
 
   useEffect(() => {
     const fetchBudgets = async () => {
@@ -25,7 +26,7 @@ export const BudgetPage = (props: IBudgetPageProps) => {
     };
 
     fetchBudgets();
-  }, []);
+  }, [shouldRefetch]);
 
   useEffect(() => {
     const budgetJsx: JSX.Element[] = budgets.map((budget) => {
@@ -48,12 +49,17 @@ export const BudgetPage = (props: IBudgetPageProps) => {
     setIsCreatingBudget(false);
   };
 
+  const refetch = () => {
+    shouldRefetch.current = { refetch: true };
+  };
+
   return (
     <div>
       {isCreatingBudget ? (
         <NewBudgetForm
           toggleBudgetMenu={toggleBudgetMenu}
           toggleOffCreation={handleCancelBudgetCreation}
+          triggerRefetch={refetch}
         />
       ) : (
         <div className={styles.mainContainer}>

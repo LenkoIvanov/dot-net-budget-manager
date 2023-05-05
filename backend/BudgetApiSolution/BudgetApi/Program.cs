@@ -7,7 +7,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(opt => opt.UseNpgsql(builder
 builder.Services.AddControllers();
 builder.Services.AddCors((options =>
 {
-    options.AddPolicy("Policy",
+    options.AddPolicy("PolicyBudget",
     policy =>
     {
         policy.WithOrigins("http://localhost:3000", "http://localhost:5018")
@@ -16,12 +16,12 @@ builder.Services.AddCors((options =>
     });
 }));
 var app = builder.Build();
-app.MapControllers();
 app.Use(async (context, next) =>
 {
     context.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:3000");
     context.Response.Headers.Add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     await next.Invoke();
 });
-app.UseCors();
+app.UseCors("PolicyBudget");
+app.MapControllers();
 app.Run();

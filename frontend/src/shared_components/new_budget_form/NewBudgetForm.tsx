@@ -8,17 +8,30 @@ import { INewBudgetFormProps } from "./INewBudgetFormProps";
 import btnStyles from "../../shared_styles/ButtonStyles.module.css";
 import { TbPigMoney } from "react-icons/tb";
 import { Currencies } from "@/constants/Currencies";
+import { HttpPostService } from "@/services/HttpPostService";
 
 export const NewBudgetForm = (props: INewBudgetFormProps) => {
   const [nameValue, setNameValue] = useState<string>("");
   const [totalValue, setTotalValue] = useState<number | null>(null);
   const [currency, setCurrency] = useState<string>("");
-  const { toggleBudgetMenu, toggleOffCreation } = props;
+  const { toggleBudgetMenu, toggleOffCreation, triggerRefetch } = props;
 
-  const btnPlaceholder = () => {
+  const clearValues = () => {
     setNameValue("");
     setTotalValue(null);
     setCurrency("");
+  };
+
+  const postNewBudget = async () => {
+    const postService = new HttpPostService();
+    postService.postBudget(
+      nameValue,
+      totalValue === null ? 0 : totalValue,
+      currency
+    );
+    triggerRefetch();
+    // clearValues();
+    // toggleBudgetMenu(false);
   };
 
   return (
@@ -52,7 +65,7 @@ export const NewBudgetForm = (props: INewBudgetFormProps) => {
           label="Cancel"
           outlined
           onClick={() => {
-            btnPlaceholder();
+            clearValues();
             toggleOffCreation();
           }}
           style={{ marginRight: "2rem" }}
@@ -60,9 +73,7 @@ export const NewBudgetForm = (props: INewBudgetFormProps) => {
         />
         <Button
           label="Create"
-          onClick={() => {
-            btnPlaceholder(), toggleBudgetMenu(false);
-          }}
+          onClick={postNewBudget}
           className={btnStyles.btnPrimary}
         />
       </div>
