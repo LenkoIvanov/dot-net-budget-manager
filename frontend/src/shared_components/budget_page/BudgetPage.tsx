@@ -1,18 +1,48 @@
 import { Button } from "primereact/button";
 import btnStyles from "../../shared_styles/ButtonStyles.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NewBudgetForm } from "../new_budget_form/NewBudgetForm";
 import { IBudgetPageProps } from "./IBudgetPageProps";
 import styles from "./BudgetPage.module.css";
 import { GiMoneyStack } from "react-icons/gi";
 import { Dialog } from "primereact/dialog";
 import { BudgetListItem } from "../budget_list_item/BudgetListItem";
+import { IBudget } from "@/types/IBudget";
+import { HttpGetService } from "@/services/HttpGetService";
 
 export const BudgetPage = (props: IBudgetPageProps) => {
   const { toggleBudgetMenu } = props;
 
   const [isCreatingBudget, setIsCreatingBudget] = useState<Boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [budgetElements, setBudgetElements] = useState<JSX.Element[]>([]);
+  const [budgets, setBudgets] = useState<IBudget[]>([]);
+
+  useEffect(() => {
+    const fetchBudgets = async () => {
+      const budgets = await new HttpGetService().getBudgets();
+      if (budgets) setBudgets(budgets);
+    };
+
+    fetchBudgets();
+  }, []);
+
+  useEffect(() => {
+    const budgetJsx: JSX.Element[] = budgets.map((budget) => {
+      return (
+        <BudgetListItem
+          key={budget.id}
+          name={budget.name}
+          id={budget.id}
+          currency={budget.currency}
+          budgetItems={budget.budgetItems}
+          funds={budget.funds}
+        />
+      );
+    });
+
+    setBudgetElements(budgetJsx);
+  }, [budgets]);
 
   const handleCancelBudgetCreation = () => {
     setIsCreatingBudget(false);
@@ -58,11 +88,7 @@ export const BudgetPage = (props: IBudgetPageProps) => {
               />
             }
           >
-            <BudgetListItem name={"DefaultBudget"} />
-            <BudgetListItem name={"DefaultBudget"} />
-            <BudgetListItem name={"DefaultBudget"} />
-            <BudgetListItem name={"DefaultBudget"} />
-            <BudgetListItem name={"DefaultBudget"} />
+            {budgetElements}
           </Dialog>
         </div>
       )}
