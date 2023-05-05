@@ -6,24 +6,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BudgetApi.Migrations
 {
     /// <inheritdoc />
-    public partial class updateDbSchema : Migration
+    public partial class removeCurrrencyTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Currencies",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Currencies", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Budgets",
                 columns: table => new
@@ -32,17 +19,11 @@ namespace BudgetApi.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: true),
                     Funds = table.Column<double>(type: "double precision", nullable: false),
-                    CurId = table.Column<int>(type: "integer", nullable: false)
+                    Currency = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Budgets", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Budgets_Currencies_CurId",
-                        column: x => x.CurId,
-                        principalTable: "Currencies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -70,12 +51,6 @@ namespace BudgetApi.Migrations
                 name: "IX_BudgetItems_BudgetId",
                 table: "BudgetItems",
                 column: "BudgetId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Budgets_CurId",
-                table: "Budgets",
-                column: "CurId",
-                unique: true);
         }
 
         /// <inheritdoc />
@@ -86,9 +61,6 @@ namespace BudgetApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "Budgets");
-
-            migrationBuilder.DropTable(
-                name: "Currencies");
         }
     }
 }

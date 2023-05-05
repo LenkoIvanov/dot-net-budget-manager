@@ -28,8 +28,8 @@ namespace BudgetApi.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CurId")
-                        .HasColumnType("integer");
+                    b.Property<string>("Currency")
+                        .HasColumnType("text");
 
                     b.Property<double>("Funds")
                         .HasColumnType("double precision");
@@ -38,9 +38,6 @@ namespace BudgetApi.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CurId")
-                        .IsUnique();
 
                     b.ToTable("Budgets");
                 });
@@ -69,52 +66,18 @@ namespace BudgetApi.Migrations
                     b.ToTable("BudgetItems");
                 });
 
-            modelBuilder.Entity("BudgetApi.Entities.Currency", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Currencies");
-                });
-
-            modelBuilder.Entity("BudgetApi.Entities.Budget", b =>
-                {
-                    b.HasOne("BudgetApi.Entities.Currency", "Currency")
-                        .WithOne("Budget")
-                        .HasForeignKey("BudgetApi.Entities.Budget", "CurId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Currency");
-                });
-
             modelBuilder.Entity("BudgetApi.Entities.BudgetItem", b =>
                 {
-                    b.HasOne("BudgetApi.Entities.Budget", "Budget")
+                    b.HasOne("BudgetApi.Entities.Budget", null)
                         .WithMany("BudgetItems")
                         .HasForeignKey("BudgetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Budget");
                 });
 
             modelBuilder.Entity("BudgetApi.Entities.Budget", b =>
                 {
                     b.Navigation("BudgetItems");
-                });
-
-            modelBuilder.Entity("BudgetApi.Entities.Currency", b =>
-                {
-                    b.Navigation("Budget");
                 });
 #pragma warning restore 612, 618
         }

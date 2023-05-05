@@ -9,12 +9,9 @@ namespace BudgetApi.Entities
 
         public double Funds { get; set; }
 
+        public string? Currency { get; set; }  
+
         public ICollection<BudgetItem> BudgetItems { get; } = new List<BudgetItem>(); // ref to dependants
-
-        
-        public int CurId { get; set; } // required foreign key
-
-        public Currency Currency { get; set; } = null!; // required ref navigation
 
     }
 }

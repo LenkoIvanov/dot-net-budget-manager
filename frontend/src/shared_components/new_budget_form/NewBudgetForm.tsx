@@ -7,6 +7,7 @@ import styles from "./NewBudgetForm.module.css";
 import { INewBudgetFormProps } from "./INewBudgetFormProps";
 import btnStyles from "../../shared_styles/ButtonStyles.module.css";
 import { TbPigMoney } from "react-icons/tb";
+import { Currencies } from "@/constants/Currencies";
 
 export const NewBudgetForm = (props: INewBudgetFormProps) => {
   const [nameValue, setNameValue] = useState<string>("");
@@ -42,7 +43,7 @@ export const NewBudgetForm = (props: INewBudgetFormProps) => {
         <Dropdown
           value={currency}
           onChange={(e) => setCurrency(e.value)}
-          options={["BGN", "USD", "EUR"]}
+          options={Object.values(Currencies)}
           placeholder="Select a currency"
         />
       </div>

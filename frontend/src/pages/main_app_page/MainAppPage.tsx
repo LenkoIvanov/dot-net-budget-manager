@@ -1,4 +1,3 @@
-import { HttpService } from "@/services/httpService";
 import { BudgetPage } from "@/shared_components/budget_page/BudgetPage";
 import { SingleBudgetPage } from "@/shared_components/single_budget_page/SingleBudgetPage";
 import { useState } from "react";
@@ -10,11 +9,6 @@ export const MainAppPage = () => {
     setIsBudgetMenu(toggle);
   };
 
-  const performCalls = async () => {
-    const service = new HttpService();
-    service.fetchCurrencies();
-  };
-
   return (
     <>
       {isBudgetMenu ? (
@@ -22,7 +16,6 @@ export const MainAppPage = () => {
       ) : (
         <SingleBudgetPage toggleBudgetMenu={togglePageView} />
       )}
-      <button onClick={performCalls}>bla</button>
     </>
   );
 };

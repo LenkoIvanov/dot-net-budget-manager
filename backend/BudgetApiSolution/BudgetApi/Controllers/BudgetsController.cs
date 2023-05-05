@@ -1,5 +1,6 @@
 ﻿using BudgetApi.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BudgetApi.Controllers
 {
@@ -17,7 +18,7 @@ namespace BudgetApi.Controllers
         [HttpGet]
         public ActionResult<Budget> getBudgets()
         {
-            var budgets = this.dbContext.Budgets.ToList();
+            var budgets = this.dbContext.Budgets.Include(budget => budget.BudgetItems).ToList();
             if(budgets.Count == 0)
             {
                 return NotFound();

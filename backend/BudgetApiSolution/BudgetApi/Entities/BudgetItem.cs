@@ -10,7 +10,5 @@ namespace BudgetApi.Entities
         public double Cost { get; set; }
 
         public int BudgetId { get; set; } // required foreign key
-
-        public Budget Budget { get; set; } = null!; // required ref navigation
     }
 }
