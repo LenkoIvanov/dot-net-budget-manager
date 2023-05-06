@@ -24,6 +24,17 @@ namespace BudgetApi.Controllers
             return Ok(budgetItems);
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<BudgetItem> getBudgetItems(int id)
+        {
+            var specificItems = this.dbContext.BudgetItems.Where(item => item.BudgetId == id).ToList();
+            if(specificItems.Count == 0 )
+            {
+                return NotFound();
+            }
+            return Ok(specificItems);
+        }
+
         [HttpPost]
         public ActionResult postBudgetItems(BudgetItem budgetItem)
         {

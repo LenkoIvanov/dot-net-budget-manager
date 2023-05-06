@@ -7,32 +7,55 @@ import styles from "./SingleBudgetPage.module.css";
 import { ISingleBudgetPageProps } from "./ISingleBudgetPageProps";
 import btnStyles from "../../shared_styles/ButtonStyles.module.css";
 import { IBudgetItem } from "@/types/IBudgetItem";
+import { HttpGetService } from "@/services/HttpGetService";
 
 export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
   const { toggleBudgetMenu, selectedBudget } = props;
   const [isCreating, setIsCreating] = useState<Boolean>(false);
-  const [budgetItems, setBudgetItems] = useState<IBudgetItem[]>([]);
-  const [budgetItemsJSX, setBudgetItemsJSX] = useState<JSX.Element[]>([]);
+  const [budgetItems, setBudgetItems] = useState<IBudgetItem[]>(
+    selectedBudget.budgetItems
+  );
   const [availableFunds, setAvailableFunds] = useState<number>(0);
+  const [shouldRefetch, setShouldRefetch] = useState<{ refetch: boolean }>({
+    refetch: false,
+  });
 
   useEffect(() => {
-    const items = selectedBudget.budgetItems;
-    let fundsLeft = selectedBudget.funds;
-    items.forEach((item) => (fundsLeft = fundsLeft - item.cost));
-    renderBudgetItems(items);
-    setAvailableFunds(fundsLeft);
-    setBudgetItems(items);
-  }, [selectedBudget]);
+    calculateRemainingFunds();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const getRelatedBudgetItems = async () => {
+      const relatedBudgetItems = await new HttpGetService().getBudgetItems(
+        selectedBudget.id
+      );
+      if (relatedBudgetItems) setBudgetItems(relatedBudgetItems);
+    };
+
+    getRelatedBudgetItems();
+    calculateRemainingFunds();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shouldRefetch]);
 
   const handleClose = () => {
     setIsCreating(false);
   };
 
-  const renderBudgetItems = (allItems: IBudgetItem[]) => {
-    const elementItems = allItems.map((budgetItem) => {
+  const handleRefetch = () => {
+    setShouldRefetch({ refetch: true });
+  };
+
+  const calculateRemainingFunds = () => {
+    let fundsLeft = selectedBudget.funds;
+    budgetItems.forEach((item) => (fundsLeft = fundsLeft - item.cost));
+    setAvailableFunds(fundsLeft);
+  };
+
+  const renderBudgetItems = () => {
+    return budgetItems.map((budgetItem) => {
       return <BudgetItem key={budgetItem.id} budgetItemInfo={budgetItem} />;
     });
-    setBudgetItemsJSX(elementItems);
   };
 
   return (
@@ -44,7 +67,11 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
         total={selectedBudget.funds}
       />
       {isCreating ? (
-        <NewItemForm closeForm={handleClose} />
+        <NewItemForm
+          closeForm={handleClose}
+          selectedBudgetId={selectedBudget.id}
+          handleRefetch={handleRefetch}
+        />
       ) : (
         <Button
           label="Create new item"
@@ -53,7 +80,7 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
           className={btnStyles.btnPrimary}
         />
       )}
-      <div className={styles.itemContainer}>{budgetItemsJSX}</div>
+      <div className={styles.itemContainer}>{renderBudgetItems()}</div>
       <Button
         label={"To budgets menu"}
         onClick={() => toggleBudgetMenu(true)}
