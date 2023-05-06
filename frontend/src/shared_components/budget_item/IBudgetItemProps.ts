@@ -1,4 +1,5 @@
+import { IBudgetItem } from "@/types/IBudgetItem";
+
 export interface IBudgetItemProps {
-  name: string;
-  value: number;
+  budgetItemInfo: IBudgetItem;
 }

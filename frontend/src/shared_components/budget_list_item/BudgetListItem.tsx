@@ -11,9 +11,9 @@ export const BudgetListItem = (props: IBudgetListItemProps) => {
       <span style={{ display: "flex", alignItems: "end" }}>
         {budgetInfo.name}
       </span>
-      <div>
+      <div className={styles.iconContainer}>
         <RxEyeOpen
-          style={{ cursor: "pointer", marginRight: "5px" }}
+          style={{ cursor: "pointer" }}
           onClick={() => handleOpenBudget(budgetInfo)}
         />
         <MdDelete style={{ cursor: "pointer" }} />

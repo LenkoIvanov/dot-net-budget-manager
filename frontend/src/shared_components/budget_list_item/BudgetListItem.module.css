@@ -8,3 +8,9 @@
   background-color: aliceblue;
   margin-bottom: 1rem;
 }
+
+.iconContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 50px;
+}
