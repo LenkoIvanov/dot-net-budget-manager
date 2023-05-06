@@ -30,7 +30,7 @@ export const NewBudgetForm = (props: INewBudgetFormProps) => {
       currency
     );
     triggerRefetch();
-    // clearValues();
+    clearValues();
     // toggleBudgetMenu(false);
   };
 

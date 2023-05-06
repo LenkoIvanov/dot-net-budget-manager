@@ -9,7 +9,7 @@ import btnStyles from "../../shared_styles/ButtonStyles.module.css";
 
 export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
   const [isCreating, setIsCreating] = useState<Boolean>(false);
-  const { toggleBudgetMenu } = props;
+  const { toggleBudgetMenu, selectedBudget } = props;
 
   const callBackPlaceholder = () => {
     setIsCreating(false);
@@ -18,10 +18,10 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
   return (
     <div className={styles.container}>
       <BudgetTracker
-        budgetName="Default Budget"
-        currency="BGN"
-        remaining={100}
-        total={100}
+        budgetName={selectedBudget.name}
+        currency={selectedBudget.currency}
+        remaining={selectedBudget.funds}
+        total={selectedBudget.funds}
       />
       {isCreating ? (
         <NewItemForm closeForm={callBackPlaceholder} />

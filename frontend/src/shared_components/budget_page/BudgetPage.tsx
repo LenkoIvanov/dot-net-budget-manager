@@ -11,7 +11,7 @@ import { IBudget } from "@/types/IBudget";
 import { HttpGetService } from "@/services/HttpGetService";
 
 export const BudgetPage = (props: IBudgetPageProps) => {
-  const { toggleBudgetMenu } = props;
+  const { toggleBudgetMenu, handleOpenBudget } = props;
 
   const [isCreatingBudget, setIsCreatingBudget] = useState<Boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -35,16 +35,14 @@ export const BudgetPage = (props: IBudgetPageProps) => {
       return (
         <BudgetListItem
           key={budget.id}
-          name={budget.name}
-          id={budget.id}
-          currency={budget.currency}
-          budgetItems={budget.budgetItems}
-          funds={budget.funds}
+          budgetInfo={budget}
+          handleOpenBudget={handleOpenBudget}
         />
       );
     });
 
     setBudgetElements(budgetJsx);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [budgets]);
 
   const handleCancelBudgetCreation = () => {
@@ -84,17 +82,17 @@ export const BudgetPage = (props: IBudgetPageProps) => {
             visible={isModalVisible}
             onHide={() => setIsModalVisible(false)}
             style={{ width: "50rem" }}
-            footer={
-              <Button
-                label="Open budget"
-                className={btnStyles.btnPrimary}
-                onClick={() => {
-                  setIsModalVisible(false);
-                  toggleBudgetMenu(false);
-                }}
-                disabled={true}
-              />
-            }
+            // footer={
+            //   <Button
+            //     label="Open budget"
+            //     className={btnStyles.btnPrimary}
+            //     onClick={() => {
+            //       setIsModalVisible(false);
+            //       toggleBudgetMenu(false);
+            //     }}
+            //     disabled={true}
+            //   />
+            // }
           >
             {budgetElements}
           </Dialog>

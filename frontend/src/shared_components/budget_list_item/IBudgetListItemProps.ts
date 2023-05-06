@@ -1,9 +1,6 @@
-import { IBudgetItem } from "@/types/IBudgetItem";
+import { IBudget } from "@/types/IBudget";
 
 export interface IBudgetListItemProps {
-  name: string;
-  id: number;
-  currency: string;
-  budgetItems: IBudgetItem[];
-  funds: number;
+  budgetInfo: IBudget;
+  handleOpenBudget: (selectedBudget: IBudget) => void;
 }

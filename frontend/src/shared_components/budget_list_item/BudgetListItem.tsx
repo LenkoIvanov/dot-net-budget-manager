@@ -1,29 +1,23 @@
 import { MdDelete } from "react-icons/md";
+import { RxEyeOpen } from "react-icons/rx";
 import { IBudgetListItemProps } from "./IBudgetListItemProps";
-import { Checkbox } from "primereact/checkbox";
 import styles from "./BudgetListItem.module.css";
-import { useState } from "react";
 
 export const BudgetListItem = (props: IBudgetListItemProps) => {
-  const { name } = props;
-  const [checked, setChecked] = useState<boolean>(false);
-
-  const handleChange = () => {
-    setChecked(!checked);
-  };
+  const { budgetInfo, handleOpenBudget } = props;
 
   return (
     <div className={styles.listItemContainer}>
       <span style={{ display: "flex", alignItems: "end" }}>
-        <input
-          type="checkbox"
-          onChange={handleChange}
-          checked={checked}
-          style={{ color: "steelblue", cursor: "pointer" }}
-        />
-        {name}
+        {budgetInfo.name}
       </span>
-      <MdDelete style={{ cursor: "pointer" }} />
+      <div>
+        <RxEyeOpen
+          style={{ cursor: "pointer", marginRight: "5px" }}
+          onClick={() => handleOpenBudget(budgetInfo)}
+        />
+        <MdDelete style={{ cursor: "pointer" }} />
+      </div>
     </div>
   );
 };
