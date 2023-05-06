@@ -17,7 +17,9 @@ export const BudgetPage = (props: IBudgetPageProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [budgetElements, setBudgetElements] = useState<JSX.Element[]>([]);
   const [budgets, setBudgets] = useState<IBudget[]>([]);
-  const shouldRefetch = useRef<{ refetch: boolean }>({ refetch: true });
+  const [shouldRefetch, setShouldRefetch] = useState<{ refetch: boolean }>({
+    refetch: true,
+  });
 
   useEffect(() => {
     const fetchBudgets = async () => {
@@ -50,7 +52,7 @@ export const BudgetPage = (props: IBudgetPageProps) => {
   };
 
   const refetch = () => {
-    shouldRefetch.current = { refetch: true };
+    setShouldRefetch({ refetch: true });
   };
 
   return (
