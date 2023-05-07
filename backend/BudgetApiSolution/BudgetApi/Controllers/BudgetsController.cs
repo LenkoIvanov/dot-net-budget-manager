@@ -35,7 +35,7 @@ namespace BudgetApi.Controllers
             }
             this.dbContext.Budgets.Add(budget);
             this.dbContext.SaveChanges();
-            return Ok();
+            return Ok(budget.Id);
         }
 
     }

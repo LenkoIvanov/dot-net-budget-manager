@@ -14,24 +14,12 @@ export const NewBudgetForm = (props: INewBudgetFormProps) => {
   const [nameValue, setNameValue] = useState<string>("");
   const [totalValue, setTotalValue] = useState<number | null>(null);
   const [currency, setCurrency] = useState<string>("");
-  const { toggleBudgetMenu, toggleOffCreation, triggerRefetch } = props;
+  const { toggleOffCreation, handleCreation } = props;
 
   const clearValues = () => {
     setNameValue("");
     setTotalValue(null);
     setCurrency("");
-  };
-
-  const postNewBudget = async () => {
-    const postService = new HttpPostService();
-    postService.postBudget(
-      nameValue,
-      totalValue === null ? 0 : totalValue,
-      currency
-    );
-    triggerRefetch();
-    clearValues();
-    // toggleBudgetMenu(false);
   };
 
   return (
@@ -73,7 +61,10 @@ export const NewBudgetForm = (props: INewBudgetFormProps) => {
         />
         <Button
           label="Create"
-          onClick={postNewBudget}
+          onClick={() => {
+            handleCreation(nameValue, totalValue, currency);
+            clearValues();
+          }}
           className={btnStyles.btnPrimary}
         />
       </div>

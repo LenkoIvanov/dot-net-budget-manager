@@ -1,5 +1,9 @@
 export interface INewBudgetFormProps {
   toggleBudgetMenu: (toggle: Boolean) => void;
   toggleOffCreation: () => void;
-  triggerRefetch: () => void;
+  handleCreation: (
+    name: string,
+    funds: number | null,
+    currency: string
+  ) => void;
 }

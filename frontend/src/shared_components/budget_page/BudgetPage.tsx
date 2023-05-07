@@ -9,17 +9,15 @@ import { Dialog } from "primereact/dialog";
 import { BudgetListItem } from "../budget_list_item/BudgetListItem";
 import { IBudget } from "@/types/IBudget";
 import { HttpGetService } from "@/services/HttpGetService";
+import { HttpPostService } from "@/services/HttpPostService";
 
 export const BudgetPage = (props: IBudgetPageProps) => {
   const { toggleBudgetMenu, handleOpenBudget } = props;
 
   const [isCreatingBudget, setIsCreatingBudget] = useState<Boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [budgetElements, setBudgetElements] = useState<JSX.Element[]>([]);
+  // const [budgetElements, setBudgetElements] = useState<JSX.Element[]>([]);
   const [budgets, setBudgets] = useState<IBudget[]>([]);
-  const [shouldRefetch, setShouldRefetch] = useState<{ refetch: boolean }>({
-    refetch: true,
-  });
 
   useEffect(() => {
     const fetchBudgets = async () => {
@@ -28,10 +26,29 @@ export const BudgetPage = (props: IBudgetPageProps) => {
     };
 
     fetchBudgets();
-  }, [shouldRefetch]);
+  }, []);
 
-  useEffect(() => {
-    const budgetJsx: JSX.Element[] = budgets.map((budget) => {
+  // useEffect(() => {
+  //   const budgetJsx: JSX.Element[] = budgets.map((budget) => {
+  //     return (
+  //       <BudgetListItem
+  //         key={budget.id}
+  //         budgetInfo={budget}
+  //         handleOpenBudget={handleOpenBudget}
+  //       />
+  //     );
+  //   });
+
+  //   setBudgetElements(budgetJsx);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [budgets]);
+
+  const handleCancelBudgetCreation = () => {
+    setIsCreatingBudget(false);
+  };
+
+  const renderBudgets = (): JSX.Element[] => {
+    return budgets.map((budget) => {
       return (
         <BudgetListItem
           key={budget.id}
@@ -40,17 +57,30 @@ export const BudgetPage = (props: IBudgetPageProps) => {
         />
       );
     });
-
-    setBudgetElements(budgetJsx);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [budgets]);
-
-  const handleCancelBudgetCreation = () => {
-    setIsCreatingBudget(false);
   };
 
-  const refetch = () => {
-    setShouldRefetch({ refetch: true });
+  const postNewBudget = async (
+    name: string,
+    funds: number | null,
+    currency: string
+  ) => {
+    const postService = new HttpPostService();
+    const budgetId: number = await postService.postBudget(
+      name,
+      funds === null ? 0 : funds,
+      currency
+    );
+    const newBudget: IBudget = {
+      id: budgetId,
+      name: name,
+      funds: funds === null ? 0 : funds,
+      budgetItems: [],
+      currency: currency,
+    };
+    const updatedBudgets = budgets;
+    updatedBudgets.push(newBudget);
+    setBudgets(updatedBudgets);
+    // toggleBudgetMenu(false);
   };
 
   return (
@@ -59,7 +89,7 @@ export const BudgetPage = (props: IBudgetPageProps) => {
         <NewBudgetForm
           toggleBudgetMenu={toggleBudgetMenu}
           toggleOffCreation={handleCancelBudgetCreation}
-          triggerRefetch={refetch}
+          handleCreation={postNewBudget}
         />
       ) : (
         <div className={styles.mainContainer}>
@@ -94,7 +124,7 @@ export const BudgetPage = (props: IBudgetPageProps) => {
             //   />
             // }
           >
-            {budgetElements}
+            {renderBudgets()}
           </Dialog>
         </div>
       )}
