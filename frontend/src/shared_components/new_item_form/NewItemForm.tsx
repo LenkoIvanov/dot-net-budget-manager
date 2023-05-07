@@ -5,10 +5,9 @@ import { Button } from "primereact/button";
 import styles from "./NewItemForm.module.css";
 import { INewItemFormProps } from "./INewItemFormProps";
 import btnStyles from "../../shared_styles/ButtonStyles.module.css";
-import { HttpPostService } from "@/services/HttpPostService";
 
 export const NewItemForm = (props: INewItemFormProps) => {
-  const { closeForm, selectedBudgetId, handleRefetch } = props;
+  const { closeForm, onCreation } = props;
   const [nameValue, setNameValue] = useState<string>("");
   const [priceValue, setPriceValue] = useState<number | null>(null);
 
@@ -16,17 +15,6 @@ export const NewItemForm = (props: INewItemFormProps) => {
     setNameValue("");
     setPriceValue(null);
     closeForm();
-  };
-
-  const handleCreation = async () => {
-    const postService = new HttpPostService();
-    await postService.postBudgetItem(
-      nameValue,
-      priceValue === null ? 0 : priceValue,
-      selectedBudgetId
-    );
-    handleRefetch();
-    clearForm();
   };
 
   return (
@@ -56,7 +44,10 @@ export const NewItemForm = (props: INewItemFormProps) => {
         />
         <Button
           label="Create"
-          onClick={handleCreation}
+          onClick={() => {
+            onCreation(nameValue, priceValue);
+            closeForm();
+          }}
           className={btnStyles.btnPrimary}
         />
       </div>

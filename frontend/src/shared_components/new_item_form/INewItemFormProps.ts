@@ -1,5 +1,5 @@
 export interface INewItemFormProps {
   closeForm: () => void;
   selectedBudgetId: number;
-  handleRefetch: () => void;
+  onCreation: (name: string, cost: number | null) => void;
 }

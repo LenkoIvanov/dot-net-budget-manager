@@ -30,7 +30,8 @@ namespace BudgetApi.Controllers
             var specificItems = this.dbContext.BudgetItems.Where(item => item.BudgetId == id).ToList();
             if(specificItems.Count == 0 )
             {
-                return NotFound();
+                var empty = new BudgetItem[0];
+                return Ok(empty);
             }
             return Ok(specificItems);
         }
@@ -44,7 +45,7 @@ namespace BudgetApi.Controllers
             }
             this.dbContext.BudgetItems.Add(budgetItem);
             this.dbContext.SaveChanges();
-            return Ok();
+            return Ok(budgetItem.Id);
         }
     }
 }
