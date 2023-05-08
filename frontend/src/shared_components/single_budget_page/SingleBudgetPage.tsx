@@ -9,6 +9,7 @@ import btnStyles from "../../shared_styles/ButtonStyles.module.css";
 import { IBudgetItem } from "@/types/IBudgetItem";
 import { HttpGetService } from "@/services/HttpGetService";
 import { HttpPostService } from "@/services/HttpPostService";
+import { HttpDeleteService } from "@/services/HttpDeleteService";
 
 export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
   const { toggleBudgetMenu, selectedBudget } = props;
@@ -43,7 +44,13 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
 
   const renderBudgetItems = () => {
     return budgetItems.map((budgetItem) => {
-      return <BudgetItem key={budgetItem.id} budgetItemInfo={budgetItem} />;
+      return (
+        <BudgetItem
+          key={budgetItem.id}
+          budgetItemInfo={budgetItem}
+          onDelete={handleDeletion}
+        />
+      );
     });
   };
 
@@ -62,6 +69,16 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
     };
     const updatedItems = budgetItems;
     updatedItems.push(newItemToAppend);
+    calculateRemainingFunds(updatedItems);
+    setBudgetItems(updatedItems);
+  };
+
+  const handleDeletion = (itemId: number) => {
+    const deleteService = new HttpDeleteService();
+    deleteService.deleteBudgetItem(itemId);
+    const idxOfItemToDelete = budgetItems.findIndex((bi) => bi.id === itemId);
+    const updatedItems = [...budgetItems];
+    updatedItems.splice(idxOfItemToDelete, 1);
     calculateRemainingFunds(updatedItems);
     setBudgetItems(updatedItems);
   };

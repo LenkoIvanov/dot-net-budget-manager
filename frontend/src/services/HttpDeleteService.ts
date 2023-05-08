@@ -7,4 +7,11 @@ export class HttpDeleteService {
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
   }
+
+  deleteBudgetItem(itemId: number) {
+    return axios
+      .delete(`http://localhost:5018/api/budgetitem/${itemId}`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  }
 }

@@ -3,7 +3,7 @@ import styles from "./BudgetItem.module.css";
 import { MdCreate, MdDelete } from "react-icons/md";
 
 export const BudgetItem = (props: IBudgetItemProps) => {
-  const { budgetItemInfo } = props;
+  const { budgetItemInfo, onDelete } = props;
 
   return (
     <div className={styles.container}>
@@ -12,7 +12,10 @@ export const BudgetItem = (props: IBudgetItemProps) => {
       </div>
       <div className={styles.iconContainer}>
         <MdCreate style={{ cursor: "pointer" }} />
-        <MdDelete style={{ cursor: "pointer" }} />
+        <MdDelete
+          style={{ cursor: "pointer" }}
+          onClick={() => onDelete(budgetItemInfo.id)}
+        />
       </div>
     </div>
   );
