@@ -66,7 +66,7 @@ export const BudgetPage = (props: IBudgetPageProps) => {
     const updatedBudgets = budgets;
     updatedBudgets.push(newBudget);
     setBudgets([...updatedBudgets]);
-    // toggleBudgetMenu(false);
+    handleOpenBudget(newBudget);
   };
 
   const deleteBudget = async (budgetId: number) => {
