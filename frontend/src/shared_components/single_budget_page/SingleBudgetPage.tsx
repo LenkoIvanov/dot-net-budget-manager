@@ -105,9 +105,7 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
           className={btnStyles.btnPrimary}
         />
       )}
-      <Suspense fallback={<h2>🌀 Loading...</h2>}>
-        <div className={styles.itemContainer}>{renderBudgetItems()}</div>
-      </Suspense>
+      <div className={styles.itemContainer}>{renderBudgetItems()}</div>
       <Button
         label={"To budgets menu"}
         onClick={() => toggleBudgetMenu(true)}
