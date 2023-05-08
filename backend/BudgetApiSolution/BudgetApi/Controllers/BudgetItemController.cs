@@ -60,5 +60,29 @@ namespace BudgetApi.Controllers
             this.dbContext.SaveChanges();
             return Ok("Item delete successfully");
         }
+
+        [HttpPut("{id}")]
+        public ActionResult updateBudgetItem(int id, BudgetItem updatedBudgetItem)
+        {
+            var oldBudgetItem = this.dbContext.BudgetItems.FirstOrDefault(bi => bi.Id == id);
+
+            if(oldBudgetItem == null)
+            {
+                return NotFound("Requested item does not exist!");
+            }
+
+            if(updatedBudgetItem.Id != oldBudgetItem.Id)
+            {
+                return BadRequest("IDs are mismatched!");
+            }
+
+            oldBudgetItem.Name = updatedBudgetItem.Name;
+            oldBudgetItem.BudgetId = updatedBudgetItem.BudgetId;
+            oldBudgetItem.Id = updatedBudgetItem.Id;
+            oldBudgetItem.Cost = updatedBudgetItem.Cost;
+
+            this.dbContext.SaveChanges();
+            return Ok("Item updated successfully");
+        }
     }
 }

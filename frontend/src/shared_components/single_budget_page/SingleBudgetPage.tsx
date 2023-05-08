@@ -10,12 +10,24 @@ import { IBudgetItem } from "@/types/IBudgetItem";
 import { HttpGetService } from "@/services/HttpGetService";
 import { HttpPostService } from "@/services/HttpPostService";
 import { HttpDeleteService } from "@/services/HttpDeleteService";
+import { HttpPutService } from "@/services/HttpPutService";
+import { UpdateItemForm } from "../update_item_form/UpdateItemForm";
+
+//TODO: Refactor later as to not need a dummy obj. This case shouldn't ever be possible!!!
+const dummyObj: IBudgetItem = {
+  id: -1,
+  budgetId: -1,
+  cost: 0,
+  name: "",
+};
 
 export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
   const { toggleBudgetMenu, selectedBudget } = props;
   const [isCreating, setIsCreating] = useState<Boolean>(false);
+  const [isUpdating, setIsUpdating] = useState(false);
   const [budgetItems, setBudgetItems] = useState<IBudgetItem[]>([]);
   const [availableFunds, setAvailableFunds] = useState<number>(0);
+  const [itemToUpdate, setItemToUpdate] = useState<IBudgetItem | null>(null);
 
   const getRelatedBudgetItems = async () => {
     const relatedBudgetItems = await new HttpGetService().getBudgetItems(
@@ -36,6 +48,16 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
     setIsCreating(false);
   };
 
+  const handleUpdateClose = () => {
+    setIsUpdating(false);
+    setItemToUpdate(null);
+  };
+
+  const handleUpdateOpen = (itemToUpdate: IBudgetItem) => {
+    setIsUpdating(true);
+    setItemToUpdate(itemToUpdate);
+  };
+
   const calculateRemainingFunds = (items: IBudgetItem[]) => {
     let fundsLeft = selectedBudget.funds;
     items.forEach((item) => (fundsLeft = fundsLeft - item.cost));
@@ -49,6 +71,7 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
           key={budgetItem.id}
           budgetItemInfo={budgetItem}
           onDelete={handleDeletion}
+          onUpdateInit={handleUpdateOpen}
         />
       );
     });
@@ -83,6 +106,18 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
     setBudgetItems(updatedItems);
   };
 
+  const handleUpdate = (itemId: number, newName: string, newCost: number) => {
+    const idxOfItemToUpdate = budgetItems.findIndex((bi) => bi.id === itemId);
+    const updatedBudgetItems = [...budgetItems];
+    const itemInfo: IBudgetItem = updatedBudgetItems[idxOfItemToUpdate];
+    itemInfo.name = newName;
+    itemInfo.cost = newCost;
+    const putService = new HttpPutService();
+    putService.updateBudgetItem(itemId, itemInfo);
+    calculateRemainingFunds(updatedBudgetItems);
+    setBudgetItems(updatedBudgetItems);
+  };
+
   return (
     <div className={styles.container}>
       <BudgetTracker
@@ -103,7 +138,17 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
           onClick={() => setIsCreating(true)}
           style={{ marginBottom: "1rem" }}
           className={btnStyles.btnPrimary}
+          disabled={isUpdating}
         />
+      )}
+      {isUpdating ? (
+        <UpdateItemForm
+          budgetItemInfo={itemToUpdate === null ? dummyObj : itemToUpdate}
+          closeUpdate={handleUpdateClose}
+          onUpdate={handleUpdate}
+        />
+      ) : (
+        <></>
       )}
       <div className={styles.itemContainer}>{renderBudgetItems()}</div>
       <Button
