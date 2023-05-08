@@ -7,7 +7,7 @@ import { INewItemFormProps } from "./INewItemFormProps";
 import btnStyles from "../../shared_styles/ButtonStyles.module.css";
 
 export const NewItemForm = (props: INewItemFormProps) => {
-  const { closeForm, onCreation } = props;
+  const { closeForm, onCreation, availableFunds } = props;
   const [nameValue, setNameValue] = useState<string>("");
   const [priceValue, setPriceValue] = useState<number | null>(null);
 
@@ -49,6 +49,7 @@ export const NewItemForm = (props: INewItemFormProps) => {
             closeForm();
           }}
           className={btnStyles.btnPrimary}
+          disabled={(priceValue as number) > availableFunds ? true : false}
         />
       </div>
     </div>

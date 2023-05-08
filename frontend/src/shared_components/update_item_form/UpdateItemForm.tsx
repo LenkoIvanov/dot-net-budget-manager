@@ -7,7 +7,7 @@ import btnStyles from "../../shared_styles/ButtonStyles.module.css";
 import { IUpdateItemFormProps } from "./IUpdateItemFormProps";
 
 export const UpdateItemForm = (props: IUpdateItemFormProps) => {
-  const { budgetItemInfo, closeUpdate, onUpdate } = props;
+  const { budgetItemInfo, closeUpdate, onUpdate, availableFunds } = props;
   const [nameValue, setNameValue] = useState<string>(budgetItemInfo.name);
   const [priceValue, setPriceValue] = useState<number | null>(
     budgetItemInfo.cost
@@ -17,6 +17,15 @@ export const UpdateItemForm = (props: IUpdateItemFormProps) => {
     setNameValue("");
     setPriceValue(null);
     closeUpdate();
+  };
+
+  const disabledUpdateButton = () => {
+    const actualItemPrice = availableFunds + budgetItemInfo.cost;
+    let isDisabled: boolean = false;
+    if (priceValue) {
+      priceValue > actualItemPrice ? (isDisabled = true) : (isDisabled = false);
+    }
+    return isDisabled;
   };
 
   return (
@@ -55,6 +64,7 @@ export const UpdateItemForm = (props: IUpdateItemFormProps) => {
             clearForm();
           }}
           className={btnStyles.btnPrimary}
+          disabled={disabledUpdateButton()}
         />
       </div>
     </div>

@@ -131,6 +131,7 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
           closeForm={handleClose}
           selectedBudgetId={selectedBudget.id}
           onCreation={handleCreation}
+          availableFunds={availableFunds}
         />
       ) : (
         <Button
@@ -146,6 +147,7 @@ export const SingleBudgetPage = (props: ISingleBudgetPageProps) => {
           budgetItemInfo={itemToUpdate === null ? dummyObj : itemToUpdate}
           closeUpdate={handleUpdateClose}
           onUpdate={handleUpdate}
+          availableFunds={availableFunds}
         />
       ) : (
         <></>
