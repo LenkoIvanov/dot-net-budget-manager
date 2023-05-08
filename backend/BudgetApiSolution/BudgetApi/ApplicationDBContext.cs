@@ -26,6 +26,7 @@ public class ApplicationDBContext : DbContext
             .HasMany(e => e.BudgetItems)
             .WithOne()
             .HasForeignKey(e => e.BudgetId)
-            .HasPrincipalKey(e => e.Id);
+            .HasPrincipalKey(e => e.Id)
+            .OnDelete(DeleteBehavior.Cascade);
     }   
 }

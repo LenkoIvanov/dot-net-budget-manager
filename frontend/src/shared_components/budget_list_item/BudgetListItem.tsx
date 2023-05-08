@@ -4,7 +4,7 @@ import { IBudgetListItemProps } from "./IBudgetListItemProps";
 import styles from "./BudgetListItem.module.css";
 
 export const BudgetListItem = (props: IBudgetListItemProps) => {
-  const { budgetInfo, handleOpenBudget } = props;
+  const { budgetInfo, handleOpenBudget, handleDeleteBudget } = props;
 
   return (
     <div className={styles.listItemContainer}>
@@ -16,7 +16,10 @@ export const BudgetListItem = (props: IBudgetListItemProps) => {
           style={{ cursor: "pointer" }}
           onClick={() => handleOpenBudget(budgetInfo)}
         />
-        <MdDelete style={{ cursor: "pointer" }} />
+        <MdDelete
+          style={{ cursor: "pointer" }}
+          onClick={() => handleDeleteBudget(budgetInfo.id)}
+        />
       </div>
     </div>
   );

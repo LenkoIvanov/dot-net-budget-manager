@@ -38,5 +38,17 @@ namespace BudgetApi.Controllers
             return Ok(budget.Id);
         }
 
+        [HttpDelete("{id}")]
+        public ActionResult deleteBudget(int id)
+        {
+            var budgetToDelete = this.dbContext.Budgets.FirstOrDefault(b => b.Id == id);
+            if(budgetToDelete == null)
+            {
+                return NotFound("This budget does not exist");
+            }
+            this.dbContext.Budgets.Remove(budgetToDelete);
+            this.dbContext.SaveChanges();
+            return Ok("Deletion successful");
+        }
     }
 }

@@ -10,13 +10,13 @@ import { BudgetListItem } from "../budget_list_item/BudgetListItem";
 import { IBudget } from "@/types/IBudget";
 import { HttpGetService } from "@/services/HttpGetService";
 import { HttpPostService } from "@/services/HttpPostService";
+import { HttpDeleteService } from "@/services/HttpDeleteService";
 
 export const BudgetPage = (props: IBudgetPageProps) => {
   const { toggleBudgetMenu, handleOpenBudget } = props;
 
   const [isCreatingBudget, setIsCreatingBudget] = useState<Boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  // const [budgetElements, setBudgetElements] = useState<JSX.Element[]>([]);
   const [budgets, setBudgets] = useState<IBudget[]>([]);
 
   useEffect(() => {
@@ -27,21 +27,6 @@ export const BudgetPage = (props: IBudgetPageProps) => {
 
     fetchBudgets();
   }, []);
-
-  // useEffect(() => {
-  //   const budgetJsx: JSX.Element[] = budgets.map((budget) => {
-  //     return (
-  //       <BudgetListItem
-  //         key={budget.id}
-  //         budgetInfo={budget}
-  //         handleOpenBudget={handleOpenBudget}
-  //       />
-  //     );
-  //   });
-
-  //   setBudgetElements(budgetJsx);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [budgets]);
 
   const handleCancelBudgetCreation = () => {
     setIsCreatingBudget(false);
@@ -54,6 +39,7 @@ export const BudgetPage = (props: IBudgetPageProps) => {
           key={budget.id}
           budgetInfo={budget}
           handleOpenBudget={handleOpenBudget}
+          handleDeleteBudget={deleteBudget}
         />
       );
     });
@@ -79,8 +65,19 @@ export const BudgetPage = (props: IBudgetPageProps) => {
     };
     const updatedBudgets = budgets;
     updatedBudgets.push(newBudget);
-    setBudgets(updatedBudgets);
+    setBudgets([...updatedBudgets]);
     // toggleBudgetMenu(false);
+  };
+
+  const deleteBudget = async (budgetId: number) => {
+    const deleteService = new HttpDeleteService();
+    await deleteService.deleteBudget(budgetId);
+    const idxOfDeletedBudget = budgets.findIndex(
+      (budget) => budget.id === budgetId
+    );
+    const updatedBudgets = budgets;
+    updatedBudgets.splice(idxOfDeletedBudget, 1);
+    setBudgets([...updatedBudgets]);
   };
 
   return (
@@ -112,17 +109,6 @@ export const BudgetPage = (props: IBudgetPageProps) => {
             visible={isModalVisible}
             onHide={() => setIsModalVisible(false)}
             style={{ width: "50rem" }}
-            // footer={
-            //   <Button
-            //     label="Open budget"
-            //     className={btnStyles.btnPrimary}
-            //     onClick={() => {
-            //       setIsModalVisible(false);
-            //       toggleBudgetMenu(false);
-            //     }}
-            //     disabled={true}
-            //   />
-            // }
           >
             {renderBudgets()}
           </Dialog>
